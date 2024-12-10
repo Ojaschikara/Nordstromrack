@@ -9,7 +9,8 @@ const cartRouter = express.Router();
 
 cartRouter.post('/', async (req, res) => {
     try {
-      const newCart = new cartModel(req.body);
+      const userId = req.user._id;
+      const newCart = new cartModel(req.body,userId);
       const savedCart = await newCart.save();
       // console.log("saved cart",savedCart)
       res.status(201).json(savedCart);
@@ -18,7 +19,7 @@ cartRouter.post('/', async (req, res) => {
     }
   });
   
-  cartRouter.post('/getByEmail', async (req, res) => {
+  cartRouter.get('/getByEmail', async (req, res) => {
     try {
       const cart = await cartModel.find({ email: req.body.email });
       if (!cart) return res.status(404).json({ message: 'cart not found' });

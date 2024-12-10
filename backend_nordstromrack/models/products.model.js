@@ -8,7 +8,8 @@ const productSchema = new mongoose.Schema(
   {
     timestamps: true, 
     // collection: "products",
-    // strict: false,    
+    // strict: false, 
+    versionKey:false   
   }
 );
 
