@@ -10,15 +10,10 @@ const cors = require("cors");
 const PORT = process.env.PORT;
 
 server.use(express.json());
-// server.use(cors({
-//     origin: '*', 
-//   }));
 server.use(cors({
-    origin: ['http://localhost:5173'],  // Specify your frontend URL here
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allow these HTTP methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allow headers
-    credentials: true,  // Allow cookies or credentials if needed
-}));
+    origin: '*', 
+  }));
+
 server.get("/",(req,res)=>{
     res.send("Server is running")
 })
