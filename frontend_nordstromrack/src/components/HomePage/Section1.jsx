@@ -9,10 +9,12 @@ import section1_2 from '../../assets/HomePage/section1_2.png'
 import section1_3 from '../../assets/HomePage/section1_3.png'
 import section1_4 from '../../assets/HomePage/section1_4.png'
 import section1_5 from '../../assets/HomePage/section1_5.png'
-
+import { useNavigate } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Signup from "../../pages/SignUp";
 const Section1 = () => {
+  const navigate = useNavigate();
   const [slides, setSlides] = useState([]);
   const sliderData =[
     {
@@ -121,15 +123,17 @@ const Section1 = () => {
     arrows:true,
     infinite: true,
     speed: 500,
-    slidesToShow: 8,
+    slidesToShow: 6,
     centerMode: true,
-    slidesToScroll: 7
+    slidesToScroll: 1
   };
   return (
     <div >
         <div className=" h-36 text-center pt-10 ">
          <h1 className="text-2xl font-bold  ">Move to Rack, easier and faster</h1>
-         <button className="border p-2 m-1 hover:bg-gray-100 border-blue-500">Sign In or Create an Account </button>
+         <button className="border p-2 m-1 hover:bg-gray-100 border-blue-500" onClick={() => navigate("/register")}
+             >Sign In or Create an Account 
+         </button>
         </div>
       <img className='w-full my-7' src={section1} alt="Discount image" />
      
@@ -152,9 +156,54 @@ const Section1 = () => {
       </Slider>
     </div>
     <img className='w-full my-7' src={section1_3} alt="Discount image" />
+    <div className="slider-container">
+      {slides.length > 0 ? (
+        <Slider {...settings2}>
+          {slides.map((slide) => (
+            <div key={slide.id}>
+              <img
+                className="w-full"
+                src={slide.image}
+                alt={slide.title}
+                style={{ maxHeight: "500px", objectFit: "cover" }}
+              />
+              <div style={{ textAlign: "center", padding: "10px" }}>
+                <h2>{slide.title}</h2>
+                <p>{slide.description}</p>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      ) : (
+        <p>Loading slides...</p>
+      )}
+    </div>
 
-    <img className='w-full my-7' src={section1_2} alt="Discount image" />
+
+    
     <img className='w-full my-7' src={section1_4} alt="Discount image" />
+    <div className="slider-container">
+      {slides.length > 0 ? (
+        <Slider {...settings2}>
+          {slides.map((slide) => (
+            <div key={slide.id}>
+              <img
+                className="w-full"
+                src={slide.image}
+                alt={slide.title}
+                style={{ maxHeight: "500px", objectFit: "cover" }}
+              />
+              <div style={{ textAlign: "center", padding: "10px" }}>
+                <h2>{slide.title}</h2>
+                <p>{slide.description}</p>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      ) : (
+        <p>Loading slides...</p>
+      )}
+    </div>
     <img className='w-full my-7' src={section1_5} alt="Discount image" />
 
     <h1 className="font-bold text-lg">Cyber Extended Scores Up to 70% Off</h1>
@@ -185,6 +234,7 @@ const Section1 = () => {
         <p>Loading slides...</p>
       )}
     </div>
+    <img className='w-full my-7' src={section1_2} alt="Discount image" />
 
     </div>
   )
