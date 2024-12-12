@@ -11,7 +11,7 @@ const PORT = process.env.PORT;
 
 server.use(express.json());
 server.use(cors({
-    origin: '*', 
+    origin: '*',credentials: true, 
   }));
 
 server.get("/",(req,res)=>{
