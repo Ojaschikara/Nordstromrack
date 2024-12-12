@@ -6,7 +6,7 @@ import axios from "axios";
   import toast from "../components/Toast"
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import Footer from "../components/footer/Footer";
+import Footer from "../components/Footer/Footer";
   
 
 const Login = () => {
