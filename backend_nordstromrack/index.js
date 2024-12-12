@@ -10,9 +10,18 @@ const cors = require("cors");
 const PORT = process.env.PORT;
 
 server.use(express.json());
-server.use(cors({
-    origin: '*',credentials: true, 
-  }));
+// server.use(cors({
+//     origin: '*',credentials: true, 
+//   }));
+const corsOptions = {
+    origin: '*', // Replace with your frontend URL
+    credentials: true,  // Allow credentials (cookies, headers, etc.)
+  };
+
+  
+  // Use CORS middleware with updated options
+  app.use(cors(corsOptions));
+  app.options('*', cors(corsOptions));
 
 server.get("/",(req,res)=>{
     res.send("Server is running")
